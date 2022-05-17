@@ -1,13 +1,45 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
 
-defineProps<{ msg: string }>()
+interface User{
+  name: string
+  age: number
+}
+
+interface Props{
+  msg: string
+  abc: number
+  obj?: User
+}
+// eslint-disable-next-line vue/no-setup-props-destructure
+const {
+  msg,
+  abc
+} = defineProps<Props>()
 
 const count = ref(0)
+
+const foo = ref<{
+  a: number
+  b: string
+} | null>(null)
+
+foo.value = {
+  a: 1,
+  b: 'hello'
+}
+
+onMounted(() => {
+  console.log(title.value)
+})
+
+const title = ref<HTMLHeadElement | null>(null)
 </script>
 
 <template>
-  <h1>{{ msg }}</h1>
+  <h1 ref="title">
+    {{ msg }}{{ abc }}
+  </h1>
 
   <p>
     Recommended IDE setup:
