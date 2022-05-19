@@ -5,5 +5,6 @@ import HelloWorld from './components/HelloWorld.vue'
 
 <template>
   <h1>App</h1>
+  <router-view />
   <HelloWorld />
 </template>
