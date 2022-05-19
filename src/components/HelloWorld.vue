@@ -1,101 +1,10 @@
-<script setup lang="ts">
-import { onMounted, ref } from 'vue'
-
-interface User{
-  name: string
-  age: number
-}
-
-interface Props{
-  msg: string
-  abc: number
-  obj?: User
-}
-// eslint-disable-next-line vue/no-setup-props-destructure
-const {
-  msg,
-  abc
-} = defineProps<Props>()
-
-const count = ref(0)
-
-const foo = ref<{
-  a: number
-  b: string
-} | null>(null)
-
-foo.value = {
-  a: 1,
-  b: 'hello'
-}
-
-onMounted(() => {
-  console.log(title.value)
-})
-
-const title = ref<HTMLHeadElement | null>(null)
+<script lang="tsx" setup>
+import Foo from './foo'
+const abc = <h1>abc</h1>
 </script>
 
 <template>
-  <h1 ref="title">
-    {{ msg }}{{ abc }}
-  </h1>
-
-  <p>
-    Recommended IDE setup:
-    <a
-      href="https://code.visualstudio.com/"
-      target="_blank"
-    >VS Code</a>
-    +
-    <a
-      href="https://github.com/johnsoncodehk/volar"
-      target="_blank"
-    >Volar</a>
-  </p>
-
-  <p>See <code>README.md</code> for more information.</p>
-
-  <p>
-    <a
-      href="https://vitejs.dev/guide/features.html"
-      target="_blank"
-    >
-      Vite Docs
-    </a>
-    |
-    <a
-      href="https://v3.vuejs.org/"
-      target="_blank"
-    >Vue 3 Docs</a>
-  </p>
-
-  <button
-    type="button"
-    @click="count++"
-  >
-    count is: {{ count }}
-  </button>
-  <p>
-    Edit
-    <code>components/HelloWorld.vue</code> to test hot module replacement.
-  </p>
+  <h1>HelloWorld</h1>
+  <abc />
+  <Foo msg="hello" />
 </template>
-
-<style scoped>
-a {
-  color: #42b983;
-}
-
-label {
-  margin: 0 0.5em;
-  font-weight: bold;
-}
-
-code {
-  background-color: #eee;
-  padding: 2px 4px;
-  border-radius: 4px;
-  color: #304455;
-}
-</style>
