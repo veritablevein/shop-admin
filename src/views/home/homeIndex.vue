@@ -25,7 +25,11 @@ console.log(User)
   >FishForYou</a>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
+h1 {
+  color: $color
+}
+
 .box{
   width: 200px;
   height: 200px;
