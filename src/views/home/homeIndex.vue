@@ -7,10 +7,19 @@ const store = useStore()
 console.log(store.state.count)
 console.log(User)
 
+const value1 = ''
 </script>
 
 <template>
   <h1>首页</h1>
+  <el-button size="small">
+    测试按钮
+  </el-button>
+  <el-date-picker
+    v-model="value1"
+    type="date"
+    placeholder="选择日期"
+  />
   <p>{{ store.state.count }}</p>
   <p>{{ store.state.foo }}</p>
   <img
