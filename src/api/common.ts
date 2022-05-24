@@ -13,7 +13,7 @@ import { ILoginInfo } from './type/common'
 export const getLoginInfo = () => {
   return request<ILoginInfo>({
     method: 'GET',
-    url: '/login/info'
+    url: '/admin/login/info'
   })
 
   // return request.get<{

@@ -27,5 +27,27 @@ export default defineConfig({
         additionalData: '@import "@/styles/variables.scss";'
       }
     }
+  },
+  server: {
+    proxy: {
+      // 字符串简写写法
+      // /foo/123 => http://localhost:4567/foo/123
+      // '/foo': 'http://localhost:4567/foo',
+      // 选项写法
+      '/admin': {
+        target: 'https://shop.fed.lagounews.com/api', // 代理的目标地址
+        /**
+         * 兼容基于名字的虚拟主机
+         * a.com localhost:xxx
+         * b.com localhost:xxx
+         * HTTP请求头部的origin字段
+         * 我们在开发模式：默认的origin是真实的origin：localhost:3000
+         * changeOrigin: true，代理服务会把origin修改为目标地址http://jsonplaceholder.typicode.com
+         */
+        changeOrigin: true
+        // 路径重写
+        // rewrite: (path) => path.replace(/^\/api/, '')
+      }
+    }
   }
 })
