@@ -29,6 +29,7 @@ export default defineConfig({
     }
   },
   server: {
+    host: '0.0.0.0',
     proxy: {
       // 字符串简写写法
       // /foo/123 => http://localhost:4567/foo/123
