@@ -25,6 +25,6 @@ request.interceptors.response.use(function (response) {
 
 export default <T = any> (config: AxiosRequestConfig) => {
   return request(config).then(res => {
-    return res.data.data as T
+    return (res.data.data || res.data) as T
   })
 }

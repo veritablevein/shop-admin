@@ -20,7 +20,6 @@ import AppHeader from './AppHeader/index.vue'
           </el-row>
         </el-header>
         <el-main>
-          <!-- 子路由出口 -->
           <router-view />
         </el-main>
       </el-container>

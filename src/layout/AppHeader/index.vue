@@ -14,6 +14,7 @@ import 'element-plus/theme-chalk/display.css'
 
 <template>
   <el-col
+    class="header-left"
     :xs="3"
     :sm="1"
     :md="1"
@@ -23,7 +24,7 @@ import 'element-plus/theme-chalk/display.css'
     <ToggleSidebar />
   </el-col>
   <el-col
-    class="hidden-xs-only"
+    class="header-left hidden-xs-only"
     :xs="15"
     :sm="15"
     :md="15"
@@ -33,6 +34,7 @@ import 'element-plus/theme-chalk/display.css'
     <Breadcrumb />
   </el-col>
   <el-col
+    class="header-right"
     :xs="5"
     :sm="5"
     :md="5"
@@ -42,6 +44,7 @@ import 'element-plus/theme-chalk/display.css'
     <MenuSearch />
   </el-col>
   <el-col
+    class="header-right"
     :xs="3"
     :sm="1"
     :md="1"
@@ -51,6 +54,7 @@ import 'element-plus/theme-chalk/display.css'
     <FullScreen />
   </el-col>
   <el-col
+    class="header-right"
     :xs="3"
     :sm="1"
     :md="1"
@@ -60,6 +64,7 @@ import 'element-plus/theme-chalk/display.css'
     <Notification />
   </el-col>
   <el-col
+    class="header-right"
     :xs="3"
     :sm="1"
     :md="1"
@@ -71,5 +76,15 @@ import 'element-plus/theme-chalk/display.css'
 </template>
 
 <style lang="scss" scoped>
-
+.header-left {
+  display: flex;
+  align-items: center;
+}
+.header-right {
+  display: flex;
+  align-items: center;
+  .el-input {
+    width: 200px;
+  }
+}
 </style>
