@@ -2,11 +2,11 @@
 import { getLoginInfo, getCaptcha, login } from '@/api/common'
 import { ILoginInfo } from '@/api/type/common'
 import { onMounted, reactive, ref } from 'vue'
-import { ElForm } from 'element-plus'
+import type { IElForm, IFormRule } from '@/types/element-plus'
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
-const form = ref<InstanceType<typeof ElForm> | null>(null)
+const form = ref<IElForm | null>(null)
 const list = ref<ILoginInfo['slide']>([])
 
 const captchaSrc = ref('')
@@ -16,7 +16,7 @@ const user = reactive({
   imgcode: ''
 })
 const loading = ref(false)
-const rules = ref({
+const rules = ref <IFormRule>({
   account: [
     { required: true, message: '请输入帐号', trigger: 'change' }
   ],
