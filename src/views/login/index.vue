@@ -1,9 +1,12 @@
 <script lang="ts" setup>
-import { getLoginInfo, getCaptcha } from '@/api/common'
+import { getLoginInfo, getCaptcha, login } from '@/api/common'
 import { ILoginInfo } from '@/api/type/common'
 import { onMounted, reactive, ref } from 'vue'
+import { ElForm } from 'element-plus'
+import { useRouter } from 'vue-router'
 
-const form = ref(null)
+const router = useRouter()
+const form = ref<InstanceType<typeof ElForm> | null>(null)
 const list = ref<ILoginInfo['slide']>([])
 
 const captchaSrc = ref('')
@@ -43,14 +46,21 @@ const loadCaptcha = async () => {
 }
 
 const handleSubmit = async () => {
-  console.log('handleSubmit')
+  // 表单验证
+  const valid = form.value?.validate()
+  if (!valid) {
+    return false
+  }
+  // 验证通过
+  loading.value = true
+  // 请求提交
+  const data = await login(user)
+  console.log(data)
+  router.replace({
+    name: 'home'
+  })
+  // 处理响应
 }
-
-// 表单验证
-
-// 验证通过
-// 请求提交
-// 处理响应
 </script>
 
 <template>
@@ -60,7 +70,7 @@ const handleSubmit = async () => {
       :rules="rules"
       ref="form"
       :model="user"
-      size="medium"
+      size="default"
       @submit.prevent="handleSubmit"
     >
       <div class="login-form_header">

@@ -2,7 +2,7 @@
  * 公共基础接口封装
  */
 import request from '@/utils/request'
-import { ILoginInfo } from './type/common'
+import { ILoginInfo, ILoginResponse } from './type/common'
 
 // interface ResponseData <T = any>{
 //   status: number
@@ -42,5 +42,17 @@ export const getCaptcha = () => {
       stamp: Date.now()
     },
     responseType: 'blob' // 请求获取图片数据
+  })
+}
+
+export const login = (data: {
+  account: string
+  pwd: string
+  imgcode: string
+}) => {
+  return request<ILoginResponse>({
+    method: 'POST',
+    url: '/admin/login',
+    data
   })
 }
