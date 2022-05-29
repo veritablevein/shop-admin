@@ -7,7 +7,7 @@ export interface State {
   count: number
   foo: string
   isCollapse: boolean
-  user: IUserInfo | null
+  user: ({ token: string } & IUserInfo) | null
 }
 
 // 定义 injection key
@@ -20,7 +20,7 @@ export const store = createStore<State>({
       count: 0,
       foo: 'store.state.foo',
       isCollapse: false,
-      user: getItem<IUserInfo>(USER)
+      user: getItem< { token: string } & IUserInfo>(USER)
     }
   },
   mutations: {
