@@ -54,7 +54,9 @@ const handleSubmit = async () => {
   // 验证通过
   loading.value = true
   // 请求提交
-  const data = await login(user)
+  const data = await login(user).finally(() => {
+    loading.value = false
+  })
   console.log(data)
   router.replace({
     name: 'home'
