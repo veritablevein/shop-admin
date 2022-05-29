@@ -1,7 +1,8 @@
 import { createStore, Store, useStore as baseUseStore } from 'vuex'
 import { InjectionKey } from 'vue'
 import type { IUserInfo } from '@/api/type/common'
-
+import { getItem, setItem } from '@/utils/storage'
+import { USER } from '@/utils/constants'
 export interface State {
   count: number
   foo: string
@@ -19,7 +20,7 @@ export const store = createStore<State>({
       count: 0,
       foo: 'store.state.foo',
       isCollapse: false,
-      user: JSON.parse(window.localStorage.getItem('user') || 'null')
+      user: getItem<IUserInfo>(USER)
     }
   },
   mutations: {
@@ -31,7 +32,7 @@ export const store = createStore<State>({
     },
     setUser (state, payload) {
       state.user = payload
-      window.localStorage.setItem('user', JSON.stringify(state.user))
+      setItem(USER, state.user)
     }
   }
 })
