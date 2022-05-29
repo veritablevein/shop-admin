@@ -7,7 +7,7 @@ export interface ILoginInfo {
 
 export interface IUserInfo {
   id: number
-  accont: string
+  account: string
   head_pic: string
 }
 

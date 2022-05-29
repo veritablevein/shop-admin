@@ -35,17 +35,17 @@ import 'element-plus/theme-chalk/display.css'
   </el-col>
   <el-col
     class="header-right"
-    :xs="5"
-    :sm="5"
-    :md="5"
-    :lg="5"
-    :xl="5"
+    :xs="3"
+    :sm="3"
+    :md="3"
+    :lg="3"
+    :xl="3"
   >
     <MenuSearch />
   </el-col>
   <el-col
     class="header-right"
-    :xs="3"
+    :xs="1"
     :sm="1"
     :md="1"
     :lg="1"
@@ -55,21 +55,21 @@ import 'element-plus/theme-chalk/display.css'
   </el-col>
   <el-col
     class="header-right"
-    :xs="3"
+    :xs="1"
     :sm="1"
     :md="1"
     :lg="1"
     :xl="1"
   >
-    <Notification />
+    <Notification class="header-right" />
   </el-col>
   <el-col
     class="header-right"
     :xs="3"
-    :sm="1"
-    :md="1"
-    :lg="1"
-    :xl="1"
+    :sm="2"
+    :md="2"
+    :lg="2"
+    :xl="2"
   >
     <UserInfo />
   </el-col>
@@ -78,10 +78,12 @@ import 'element-plus/theme-chalk/display.css'
 <style lang="scss" scoped>
 .header-left {
   display: flex;
+  margin-right: auto;
   align-items: center;
 }
 .header-right {
   display: flex;
+  margin-left: auto;
   align-items: center;
   .el-input {
     width: 200px;

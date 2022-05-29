@@ -1,10 +1,12 @@
 import { createStore, Store, useStore as baseUseStore } from 'vuex'
 import { InjectionKey } from 'vue'
+import type { IUserInfo } from '@/api/type/common'
 
 export interface State {
   count: number
   foo: string
   isCollapse: boolean
+  user: IUserInfo | null
 }
 
 // 定义 injection key
@@ -16,7 +18,8 @@ export const store = createStore<State>({
     return {
       count: 0,
       foo: 'store.state.foo',
-      isCollapse: false
+      isCollapse: false,
+      user: JSON.parse(window.localStorage.getItem('user') || 'null')
     }
   },
   mutations: {
@@ -25,6 +28,10 @@ export const store = createStore<State>({
     },
     increment (state) {
       state.count++
+    },
+    setUser (state, payload) {
+      state.user = payload
+      window.localStorage.setItem('user', JSON.stringify(state.user))
     }
   }
 })

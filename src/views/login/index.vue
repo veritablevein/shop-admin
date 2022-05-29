@@ -4,6 +4,7 @@ import { ILoginInfo } from '@/api/type/common'
 import { onMounted, reactive, ref } from 'vue'
 import type { IElForm, IFormRule } from '@/types/element-plus'
 import { useRouter } from 'vue-router'
+import { store } from '@/store'
 
 const router = useRouter()
 const form = ref<IElForm | null>(null)
@@ -57,7 +58,7 @@ const handleSubmit = async () => {
   const data = await login(user).finally(() => {
     loading.value = false
   })
-  console.log(data)
+  store.commit('setUser', data.user_info)
   router.replace({
     name: 'home'
   })
