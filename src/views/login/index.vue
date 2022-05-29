@@ -3,9 +3,10 @@ import { getLoginInfo, getCaptcha, login } from '@/api/common'
 import { ILoginInfo } from '@/api/type/common'
 import { onMounted, reactive, ref } from 'vue'
 import type { IElForm, IFormRule } from '@/types/element-plus'
-import { useRouter } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { store } from '@/store'
 
+const route = useRoute()
 const router = useRouter()
 const form = ref<IElForm | null>(null)
 const list = ref<ILoginInfo['slide']>([])
@@ -62,9 +63,11 @@ const handleSubmit = async () => {
     ...data.user_info,
     token: data.token
   })
-  router.replace({
-    name: 'home'
-  })
+  let redirect = route.query.redirect || '/'
+  if (typeof redirect !== 'string') {
+    redirect = '/'
+  }
+  router.replace(redirect)
   // 处理响应
 }
 </script>
